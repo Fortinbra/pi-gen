@@ -2,6 +2,7 @@
 
 install -m 644 files/sources.list "${ROOTFS_DIR}/etc/apt/"
 install -m 644 files/raspi.list "${ROOTFS_DIR}/etc/apt/sources.list.d/"
+install -m 664 files/packages-microsoft-prod.deb "${ROOTFS_DIR}/tmp"
 sed -i "s/RELEASE/${RELEASE}/g" "${ROOTFS_DIR}/etc/apt/sources.list"
 sed -i "s/RELEASE/${RELEASE}/g" "${ROOTFS_DIR}/etc/apt/sources.list.d/raspi.list"
 
@@ -15,6 +16,7 @@ fi
 cat files/raspberrypi.gpg.key | gpg --dearmor > "${ROOTFS_DIR}/etc/apt/trusted.gpg.d/raspberrypi-archive-stable.gpg"
 on_chroot << EOF
 dpkg --add-architecture armhf
+dpkg -i /tmp/packages-microsoft-prod.deb
 apt-get update
 apt-get dist-upgrade -y
 EOF

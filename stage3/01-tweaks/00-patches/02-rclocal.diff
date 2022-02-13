@@ -1,0 +1,11 @@
+--- work/Raspbian/stage3/rootfs/etc/rc.local	2022-02-13 13:25:33.714105000 -0600
++++ rc.local	2022-02-13 14:20:09.194105000 -0600
+@@ -17,4 +17,8 @@
+   printf "My IP address is %s\n" "$_IP"
+ fi
+ 
++# https://www.jeffgeerling.com/blog/2021/raspberry-pi-zero-2-powers-null-2-retropie-gaming-handheld
++# Enable ILI9341 display driver.
++sudo /home/pi/fbcp-ili9341/build/fbcp-ili9341 &
++
+ exit 0
