@@ -477,3 +477,19 @@ To resolve this, ensure that the following files are available (install them if 
 ```
 
 You may also need to load the module by hand - run `modprobe binfmt_misc`.
+
+## Windows Subsystem for Linux (WSL)
+
+WSL is able to produce the images, specifically Debian or Ubuntu, but it must be a WSL 2 instance. A WSL 1 instance doesn't support the binfmt modules necessary.
+
+You can set the default WSL version like this :
+ ```
+ wsl --set-default-version 2
+ ```
+
+You can upgrade an instance to WSL 2 like this:
+'wsl --set-version <distro name> 2'
+For example, with the defautl Ubuntu install:
+```
+wsl --set-version Ubuntu 2
+```
